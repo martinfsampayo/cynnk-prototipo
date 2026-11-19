@@ -35,7 +35,7 @@
   .info { padding: 22px 24px 24px; display: grid; gap: 8px; align-content: start; }
   .row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .pill { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: rgba(216,114,106,.14); color: #b4554d; }
-  .app .pill { background: rgba(162,100,216,.16); color: #7a3fb3; }
+  .app .pill, .app-pill { background: rgba(162,100,216,.16); color: #7a3fb3; }
   h2 { margin: 0; font-size: 24px; letter-spacing: -.01em; }
   .info p { margin: 0; color: var(--muted); max-width: 52ch; }
   .meta { font-size: 13px; color: var(--muted); }
@@ -52,7 +52,7 @@
     <img class="logo" src="assets/ui/monograma.png" alt="Cynnk" width="45" height="24">
     <span class="tag">Prototipo navegable · Onne</span>
     <h1>Cynnk conecta empresas con talento joven</h1>
-    <p>Elige un flujo para recorrerlo tal como está en Figma. Toca cualquier parte vacía de la pantalla para ver qué zonas son clicables.</p>
+    <p>Cuatro flujos: la web de empresas, la app de estudiantes y la web de estudiantes en modo claro y oscuro. Elige uno para recorrerlo tal como está en Figma. Toca cualquier parte vacía de la pantalla para ver qué zonas son clicables.</p>
   </header>
 
   <section class="grid" aria-label="Flujos del prototipo">
@@ -78,6 +78,24 @@
         <h2>App de estudiantes</h2>
         <p>Laura sube su índice de empleabilidad, toma retos, presenta assessments y define sus no negociables.</p>
         <span class="go">Abrir la app <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+    <a class="card web" href="estudiante-web/index.html">
+      <div class="thumb"><img src="assets/screens/estudiante-web-inicio.webp" alt="Inicio de la web del estudiante en modo claro" loading="lazy"></div>
+      <div class="info">
+        <div class="row"><span class="pill app-pill">Estudiante · Web</span><span class="meta">19 pantallas · modo claro</span></div>
+        <h2>Web de estudiantes</h2>
+        <p>La experiencia de Laura en computador: índice de empleabilidad, retos, vacantes, postulaciones y no negociables.</p>
+        <span class="go">Abrir la web <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+    <a class="card web" href="estudiante-web-oscuro/index.html">
+      <div class="thumb"><img src="assets/screens/estudiante-web-oscuro-inicio.webp" alt="Inicio de la web del estudiante en modo oscuro" loading="lazy"></div>
+      <div class="info">
+        <div class="row"><span class="pill app-pill">Estudiante · Web</span><span class="meta">19 pantallas · modo oscuro</span></div>
+        <h2>Web de estudiantes · oscuro</h2>
+        <p>El mismo recorrido en modo oscuro. Desde Mi perfil puedes cambiar entre claro y oscuro.</p>
+        <span class="go">Abrir la web oscura <span aria-hidden="true">→</span></span>
       </div>
     </a>
   </section>

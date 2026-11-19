@@ -1,11 +1,13 @@
 # Cynnk · Prototipo navegable
 
-Prototipo HTML de Cynnk exportado desde Figma, con dos flujos conectados:
+Prototipo HTML de Cynnk exportado desde Figma, con cuatro flujos:
 
 | Flujo | Carpeta | Pantallas | Modo |
 |---|---|---|---|
 | Portal de empresas (web) | `empresa/` | 16 | Claro |
 | App de estudiantes (móvil) | `estudiante/` | 19 | Oscuro |
+| Web de estudiantes | `estudiante-web/` | 19 | Claro |
+| Web de estudiantes | `estudiante-web-oscuro/` | 19 | Oscuro |
 
 `index.html` es la portada para elegir el flujo. Todos los enlaces del prototipo de Figma están replicados como zonas clicables.
 
@@ -30,6 +32,8 @@ python3 -m http.server 8000
 index.html               portada
 empresa/*.html           pantallas web (index.html = Ingreso)
 estudiante/*.html        pantallas app (index.html = 01 Ingreso)
+estudiante-web/*.html    web estudiante, modo claro (index.html = Ingreso)
+estudiante-web-oscuro/   web estudiante, modo oscuro
 assets/screens/*.webp    renders de Figma
 assets/ui/*.png          capas fijas (menú lateral, barra de navegación, modal)
 assets/css, assets/js    estilos y lógica (escala, zonas clicables, menú del prototipo)

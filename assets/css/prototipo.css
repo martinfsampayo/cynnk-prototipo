@@ -100,3 +100,7 @@ img { display: block; }
 .mode-app.full .dock-toggle { padding: 8px; }
 .mode-app.full .dock-zone, .mode-app.full .dock-title { display: none; }
 .mode-app.full .dock-panel { bottom: auto; top: 100%; left: auto; right: 0; margin: 8px 0 0; }
+
+/* Web estudiante */
+.zone-estudiante-web-oscuro { background: #0b0612; }
+.zone-estudiante-web .dock-dot, .zone-estudiante-web-oscuro .dock-dot { background: #a264d8; box-shadow: 0 0 0 3px rgba(162,100,216,.25); }
