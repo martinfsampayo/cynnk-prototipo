@@ -1,0 +1,102 @@
+/* Cynnk · prototipo navegable (exportado de Figma) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --s: 1;
+  --dock-bg: rgba(22, 16, 38, .86);
+  --dock-fg: #f1ecfb;
+  --dock-muted: #a99cc6;
+  --dock-accent: #a264d8;
+  --hint: rgba(84, 132, 255, .22);
+  --hint-line: rgba(84, 132, 255, .85);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font: 14px/1.4 Inter, system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+img { display: block; }
+
+/* ---------- Web (empresa) ---------- */
+.mode-web { background: #f5f1fb; overflow-x: hidden; }
+.mode-web .stage { zoom: var(--s); position: relative; }
+.mode-web .fixed-layer { position: fixed; top: 0; left: 0; height: 0; zoom: var(--s); z-index: 5; }
+
+/* ---------- App (estudiante) ---------- */
+.mode-app {
+  background: radial-gradient(1200px 700px at 50% -10%, #3a1d63 0%, #120a22 55%, #07040e 100%) fixed;
+  min-height: 100vh; min-height: 100dvh;
+}
+.mode-app .viewport {
+  min-height: 100vh; min-height: 100dvh;
+  display: grid; place-items: center;
+  padding-block: 24px;
+}
+.mode-app .device {
+  zoom: var(--s);
+  position: relative; width: 390px; height: var(--dev-h, 844px);
+  border-radius: 48px; overflow: hidden; background: #000;
+  box-shadow: 0 0 0 10px #17111f, 0 0 0 11px #3b2f4d, 0 40px 90px rgba(0,0,0,.6);
+  isolation: isolate;
+}
+.mode-app .scroller { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; overscroll-behavior: contain; }
+.mode-app .scroller::-webkit-scrollbar { display: none; }
+.mode-app .stage { position: relative; }
+.mode-app .fixed-layer { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+.mode-app.full .viewport { padding: 0; place-items: start center; }
+.mode-app.full .device { border-radius: 0; box-shadow: none; }
+.home-ind { position: absolute; left: 50%; bottom: 8px; width: 134px; height: 5px; margin-left: -67px; border-radius: 3px; background: #fff; opacity: .9; }
+.scrim { position: absolute; inset: 0; background: rgba(4, 2, 10, .62); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); pointer-events: auto; }
+
+/* ---------- Capas comunes ---------- */
+.screen { width: 100%; height: 100%; user-select: none; -webkit-user-drag: none; }
+.fixed-layer > * { position: absolute; }
+.fixed-layer > .fx { pointer-events: none; max-width: none; }
+.hs, .hs-block { position: absolute; display: block; border-radius: 10px; z-index: 2; }
+.fixed-layer .hs { pointer-events: auto; z-index: 6; }
+.hs { cursor: pointer; transition: background-color .25s, box-shadow .25s; -webkit-tap-highlight-color: transparent; }
+.hs:focus-visible { outline: 3px solid var(--hint-line); outline-offset: 2px; }
+.hs-block { cursor: default; }
+.hinting .hs { background: var(--hint); box-shadow: inset 0 0 0 2px var(--hint-line); }
+.stage { animation: aparecer .28s ease-out; }
+@keyframes aparecer { from { opacity: .35; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .stage { animation: none; } .hs { transition: none; } }
+
+/* ---------- Dock del prototipo ---------- */
+.dock {
+  position: fixed; z-index: 50;
+  left: max(16px, env(safe-area-inset-left, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  max-width: min(360px, calc(100vw - 32px));
+  color: var(--dock-fg); font-size: 13px;
+}
+.dock-toggle {
+  display: flex; align-items: center; gap: 8px; max-width: 100%;
+  border: 1px solid rgba(255,255,255,.12); border-radius: 999px;
+  background: var(--dock-bg); color: inherit; font: inherit; padding: 8px 14px 8px 10px; cursor: pointer;
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 10px 30px rgba(10,4,24,.35);
+}
+.dock-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--dock-accent); flex: none; box-shadow: 0 0 0 3px rgba(162,100,216,.25); }
+.zone-empresa .dock-dot { background: #d8726a; box-shadow: 0 0 0 3px rgba(216,114,106,.25); }
+.dock-zone { color: var(--dock-muted); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.dock-title { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.dock-panel {
+  margin-bottom: 8px; position: absolute; bottom: 100%; left: 0; width: min(340px, calc(100vw - 32px));
+  background: var(--dock-bg); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; padding: 10px;
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 18px 40px rgba(10,4,24,.45);
+}
+.dock-list { list-style: none; margin: 0; padding: 0; max-height: min(52vh, 420px); overflow-y: auto; display: grid; gap: 2px; }
+.dock-list a { display: block; padding: 7px 10px; border-radius: 10px; color: var(--dock-fg); text-decoration: none; }
+.dock-list a:hover { background: rgba(255,255,255,.07); }
+.dock-list a.on { background: rgba(162,100,216,.28); font-weight: 600; }
+.dock-actions { display: flex; flex-wrap: wrap; gap: 6px; border-top: 1px solid rgba(255,255,255,.1); margin-top: 8px; padding-top: 10px; }
+.dock-actions a, .dock-actions button {
+  flex: 1 1 auto; text-align: center; padding: 7px 10px; border-radius: 10px; font: inherit; font-size: 12px;
+  color: var(--dock-fg); background: rgba(255,255,255,.08); border: 0; text-decoration: none; cursor: pointer;
+}
+.dock-actions a:hover, .dock-actions button:hover { background: rgba(255,255,255,.14); }
+.dock-actions button[aria-pressed="true"] { background: var(--dock-accent); }
+
+/* En el teléfono real el menú del prototipo se vuelve un botón discreto arriba a la derecha */
+.mode-app.full .dock { left: auto; bottom: auto; right: max(10px, env(safe-area-inset-right, 0px)); top: max(10px, env(safe-area-inset-top, 0px)); }
+.mode-app.full .dock-toggle { padding: 8px; }
+.mode-app.full .dock-zone, .mode-app.full .dock-title { display: none; }
+.mode-app.full .dock-panel { bottom: auto; top: 100%; left: auto; right: 0; margin: 8px 0 0; }

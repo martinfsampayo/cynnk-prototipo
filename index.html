@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cynnk · Prototipo</title>
+<meta name="description" content="Prototipo navegable de Cynnk: portal web para empresas y app para estudiantes.">
+<link rel="icon" href="assets/ui/monograma.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  :root { --ink: #27477b; --muted: #7688a6; --bg: #f5f1fb; --card: rgba(225,212,236,.45); --coral: #d8726a; --violet: #a264d8; color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--ink); font: 16px/1.5 Inter, system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: 520px; pointer-events: none; z-index: -1;
+    background: radial-gradient(640px 320px at 50% -60px, rgba(162,100,216,.45), transparent 70%); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-block: 56px 72px; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+  header { text-align: center; display: grid; gap: 10px; justify-items: center; margin-bottom: 44px; }
+  .logo { width: 64px; height: auto; }
+  .tag { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  h1 { margin: 0; font-size: clamp(30px, 5vw, 46px); line-height: 1.1; letter-spacing: -.02em; text-wrap: balance; }
+  header p { margin: 0; max-width: 60ch; color: var(--muted); text-wrap: pretty; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 24px; }
+  .card { display: grid; grid-template-rows: auto 1fr; border-radius: 24px; overflow: hidden; text-decoration: none; color: inherit; background: var(--card);
+    border: 1px solid rgba(39,71,123,.08); transition: transform .2s ease, box-shadow .2s ease; min-width: 0; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 22px 50px rgba(51,33,93,.16); }
+  .card:focus-visible { outline: 3px solid var(--violet); outline-offset: 3px; }
+  .thumb { aspect-ratio: 16 / 10; overflow: hidden; position: relative; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+  .app .thumb { background: radial-gradient(520px 320px at 50% 0, #3a1d63, #0d0718 70%); display: grid; place-items: center; }
+  .app .thumb .phones { display: flex; gap: 14px; height: 86%; align-items: center; }
+  .app .thumb .phones img { width: auto; height: 100%; aspect-ratio: 390 / 844; object-fit: cover; object-position: top; border-radius: 18px; box-shadow: 0 0 0 4px #1b1328, 0 16px 34px rgba(0,0,0,.5); }
+  .app .thumb .phones img:nth-child(2) { height: 92%; opacity: .92; }
+  .app .thumb .phones img:nth-child(3) { height: 84%; opacity: .8; }
+  .info { padding: 22px 24px 24px; display: grid; gap: 8px; align-content: start; }
+  .row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .pill { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: rgba(216,114,106,.14); color: #b4554d; }
+  .app .pill { background: rgba(162,100,216,.16); color: #7a3fb3; }
+  h2 { margin: 0; font-size: 24px; letter-spacing: -.01em; }
+  .info p { margin: 0; color: var(--muted); max-width: 52ch; }
+  .meta { font-size: 13px; color: var(--muted); }
+  .go { margin-top: 6px; font-weight: 600; color: var(--ink); }
+  .go span { display: inline-block; transition: transform .2s; }
+  .card:hover .go span { transform: translateX(4px); }
+  footer { margin-top: 48px; text-align: center; font-size: 13px; color: var(--muted); }
+  footer kbd { font: 600 12px Inter, sans-serif; padding: 1px 6px; border-radius: 6px; background: rgba(39,71,123,.08); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img class="logo" src="assets/ui/monograma.png" alt="Cynnk" width="45" height="24">
+    <span class="tag">Prototipo navegable · Onne</span>
+    <h1>Cynnk conecta empresas con talento joven</h1>
+    <p>Elige un flujo para recorrerlo tal como está en Figma. Toca cualquier parte vacía de la pantalla para ver qué zonas son clicables.</p>
+  </header>
+
+  <section class="grid" aria-label="Flujos del prototipo">
+    <a class="card web" href="empresa/index.html">
+      <div class="thumb"><img src="assets/screens/empresa-resumen.webp" alt="Panel Resumen del portal de empresas" loading="lazy"></div>
+      <div class="info">
+        <div class="row"><span class="pill">Empresa · Web</span><span class="meta">16 pantallas · modo claro</span></div>
+        <h2>Portal de empresas</h2>
+        <p>Espumados S.A. publica vacantes, revisa postulados por compatibilidad y cierra procesos con feedback.</p>
+        <span class="go">Entrar al portal <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+    <a class="card app" href="estudiante/index.html">
+      <div class="thumb">
+        <div class="phones">
+          <img src="assets/screens/estudiante-03-inicio.webp" alt="Inicio de la app del estudiante" loading="lazy">
+          <img src="assets/screens/estudiante-05-mejoras.webp" alt="" loading="lazy">
+          <img src="assets/screens/estudiante-12-progreso.webp" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="info">
+        <div class="row"><span class="pill">Estudiante · App</span><span class="meta">19 pantallas · modo oscuro</span></div>
+        <h2>App de estudiantes</h2>
+        <p>Laura sube su índice de empleabilidad, toma retos, presenta assessments y define sus no negociables.</p>
+        <span class="go">Abrir la app <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+  </section>
+
+  <footer>Usa el botón flotante para saltar entre pantallas · <kbd>H</kbd> muestra u oculta las zonas clicables · Todos los derechos reservados © Onne.com</footer>
+</div>
+</body>
+</html>
